@@ -1,7 +1,6 @@
 package ru.epatko.demorabbitkafka.messageQueue;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
@@ -13,10 +12,8 @@ import java.util.UUID;
 public class MessagePublisher {
 
     private ChannelProcessor channelProcessor;
-    @Value("${application.id}")
-    private String senderId;
-    @Value("${spring.application.name}")
-    private String senderName;
+    private String senderId = UUID.randomUUID().toString();
+    private String senderName = "app name";
 
     @Autowired
     public MessagePublisher(ChannelProcessor channelProcessor) {
